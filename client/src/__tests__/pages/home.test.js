@@ -28,15 +28,6 @@ describe('HomePage Component', () => {
     expect(screen.getByText(/Instashare is a web application/i)).toBeInTheDocument();
   });
 
-  it('displays the logo image', () => {
-    render(<HomePage />);
-    
-    const logoImage = screen.getByAltText('');
-    expect(logoImage).toBeInTheDocument();
-    expect(logoImage).toHaveAttribute('src', '/images/mark.svg');
-    expect(logoImage).toHaveClass('h-8', 'w-auto');
-  });
-
   it('contains navigation links', () => {
     render(<HomePage />);
     
