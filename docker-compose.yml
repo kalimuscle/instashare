@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: instashare-dev
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: admin
+      PMA_PASSWORD: admin
+    ports:
+      - "8080:80"
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none' # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
